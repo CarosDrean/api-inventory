@@ -7,7 +7,7 @@ export default `
         description: String
         trademark: String
         measure: String
-        color: Int
+        color: String
         stock: Int
         price: Float
         compatibility: String
@@ -15,12 +15,12 @@ export default `
 
     input ProductInput {
         name: String!
-        category: Category
+        category: String
         model: String
         description: String
         trademark: String
         measure: String
-        color: Int
+        color: String
         stock: Int
         price: Float
         compatibility: String

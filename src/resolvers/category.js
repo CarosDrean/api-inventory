@@ -2,10 +2,12 @@ import Category from '../models/category'
 
 export default {
     Query: {
-        category: async(_, { _id }) => {
+        category: async(_, { _id }, { user }) => {
+            if(!user) throw new Error("No autenticado")
             return await Category.findById(_id).exec()
         },
-        categorys: async() => {
+        categorys: async(_, args, { user }) => {
+            if(!user) throw new Error("No autenticado")
             return await Category.find()
         }
     },

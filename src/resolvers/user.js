@@ -1,3 +1,6 @@
+import jwt from 'jsonwebtoken'
+import { SECRET_TOKEN } from '../config'
+import auth from '../middlewares/auth'
 import User from '../models/user'
 import Movement from '../models/movement'
 
@@ -8,12 +11,10 @@ export default {
         },
         users: async() => {
             return await User.find()
-        },
-        loginUser: async(_, { input }) => {
-            return User.find({ email: input.email, password: input.password })
         }
     },
     Mutation: {
+        loginUser: async (_, { email, password }) => auth.login(email, password),
         createUser: async(_, { input }) => {
             const user = new User(input)
             return await user.save()

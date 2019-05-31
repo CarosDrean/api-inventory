@@ -1,4 +1,15 @@
 export default `
+    type Error{
+        path: String!
+        message: String!
+    }
+
+    type Response {
+        success: Boolean!
+        token: String
+        errors: [Error]
+    }
+
     type User {
         _id: ID
         firstname: String!
@@ -22,19 +33,14 @@ export default `
         role: String
         address: String  
     }
-    
-    type LoginUser {
-        token: String!
-        message: String!
-    }
 
     type Query {
         user(_id: ID!): User
-        users: [User]
-        loginUser(email: String!, password: String!): LoginUser
+        users: [User]        
     }
 
     type Mutation {
+        loginUser(email: String!, password: String!): Response!
         createUser(input: UserInput): User
         deleteUser(_id: ID): User
         updateUser(_id: ID, input: UserInput): User

@@ -11,8 +11,8 @@ export default `
     }
 
     type Query {
-        Measure(_id: ID!): Measure
-        Measures: [Measure]
+        measure(_id: ID!): Measure
+        measures: [Measure]
     }
 
     type Mutation {

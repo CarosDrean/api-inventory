@@ -23,8 +23,8 @@ export default `
     }
 
     type Query {
-        Movement(_id: ID!): Movement
-        Movements: [Movement]
+        movement(_id: ID!): Movement
+        movements: [Movement]
     }
 
     type Mutation {

@@ -3,6 +3,7 @@ import graphqlHTTP from 'express-graphql'
 import schema from './schema';
 import { connect } from './database'
 import { PORT } from './config'
+import auth from './middlewares/auth';
 
 const app = express()
 connect()
@@ -13,10 +14,15 @@ app.get('/', (req, res) => {
     })
 })
 
-app.use('/graphql', graphqlHTTP({
+app.use(auth.checkHeaders)
+
+app.use('/graphql', graphqlHTTP((req) => ({
     graphiql: true,
-    schema: schema
-}))
+    schema: schema,
+    context: {
+        user: req.user
+    }
+})))
 
 app.listen(PORT, () => {
     console.log('Server online!')

@@ -10,7 +10,7 @@ const productSchema= new Schema({
     color: { type: String, required: true },
     stock: { type: Number, required: true },
     price: { type: Number, required: true },
-    compability: { type: String, required:true }
+    compatibility: { type: String, required:true }
 })
 
 export default model('Product', productSchema)

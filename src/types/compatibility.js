@@ -9,8 +9,8 @@ export default `
     }
 
     type Query {
-        Compatibility(_id: ID!): Compatibility
-        Compatibilitys: [Compatibility]
+        compatibility(_id: ID!): Compatibility
+        compatibilitys: [Compatibility]
     }
 
     type Mutation {
