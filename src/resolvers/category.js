@@ -1,13 +1,14 @@
 import Category from '../models/category'
+import permission from '../middlewares/permissions'
 
 export default {
     Query: {
-        category: async(_, { _id }, { user }) => {
-            if(!user) throw new Error("No autenticado")
+        category: async(_, { _id }, { user, role }) => {
+            if(!user) throw new Error("No autenticado")            
             return await Category.findById(_id).exec()
         },
-        categorys: async(_, args, { user }) => {
-            if(!user) throw new Error("No autenticado")
+        categorys: async(_, args, { user, role }) => {
+            permission.isUser(user, role)
             return await Category.find()
         }
     },

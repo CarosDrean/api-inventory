@@ -3,7 +3,8 @@ import graphqlHTTP from 'express-graphql'
 import schema from './schema';
 import { connect } from './database'
 import { PORT } from './config'
-import auth from './middlewares/auth';
+import auth from './middlewares/auth'
+import permission from './middlewares/permissions'
 
 const app = express()
 connect()
@@ -20,7 +21,8 @@ app.use('/graphql', graphqlHTTP((req) => ({
     graphiql: true,
     schema: schema,
     context: {
-        user: req.user
+        user: req.user,
+        role: permission.getRoleUser(req.user)
     }
 })))
 
