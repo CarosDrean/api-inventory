@@ -12,13 +12,13 @@ permission.isAdmin = (user, role) => {
 
 permission.isUser = (user, role) => {
     permission.isAuthenticated(user)
-    console.log(role)
+    console.log('per: ' + role)
     if(role !== 'User') throw new Error('No es usuario.')
 }
 
 permission.getRoleUser = async (_id) => {
-    const user = await User.findById(_id)
-    return user.role // esto esta retornando una promesa solucionarlo
+    const {role} = await User.findOne({ _id }, {role: 1})
+    return role
 }
 
 export default permission

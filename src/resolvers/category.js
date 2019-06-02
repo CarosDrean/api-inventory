@@ -9,6 +9,8 @@ export default {
         },
         categorys: async(_, args, { user, role }) => {
             permission.isUser(user, role)
+            // if(!user) throw new Error("No autenticado")  
+            // permission.isAdmin(user)
             return await Category.find()
         }
     },

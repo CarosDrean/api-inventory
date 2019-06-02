@@ -4,7 +4,6 @@ import schema from './schema';
 import { connect } from './database'
 import { PORT } from './config'
 import auth from './middlewares/auth'
-import permission from './middlewares/permissions'
 
 const app = express()
 connect()
@@ -22,7 +21,7 @@ app.use('/graphql', graphqlHTTP((req) => ({
     schema: schema,
     context: {
         user: req.user,
-        role: permission.getRoleUser(req.user)
+        role: req.role
     }
 })))
 
