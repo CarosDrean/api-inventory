@@ -1,7 +1,8 @@
-import express from 'express';
+import express from 'express'
+import "@babel/polyfill"
 import graphqlHTTP from 'express-graphql'
 import cors from 'cors'
-import schema from './schema';
+import schema from './schema'
 import { connect } from './database'
 import { PORT } from './config'
 import auth from './middlewares/auth'
