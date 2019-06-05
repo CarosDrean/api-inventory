@@ -9,6 +9,7 @@ export default `
         date: String
         time: String
         type: String
+        inventory: Inventory
     }
 
     input MovementInput {
@@ -20,6 +21,7 @@ export default `
         date: String
         time: String
         type: String
+        inventory: ID
     }
 
     type Query {

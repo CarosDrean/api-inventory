@@ -3,11 +3,13 @@ export default `
         _id: ID
         name: String!
         denomination: String!
+        inventory: Inventory
     }
 
     input MeasureInput {
         name: String!
         denomination: String!
+        inventory: ID
     }
 
     type Query {

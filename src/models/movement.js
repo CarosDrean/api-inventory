@@ -8,7 +8,8 @@ const movementSchema= new Schema({
     user: { type:Schema.Types.ObjectId, ref:'User' },
     date: { type:String, required:true },
     time: { type:String, required:true },
-    type: { type:String, required:true }
+    type: { type:String, required:true },
+    inventory: { type: Schema.Types.ObjectId, ref: 'Inventory' }
     
 })
 

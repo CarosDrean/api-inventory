@@ -21,7 +21,8 @@ export default `
         dni: Int
         role: String
         movements: [Movement]
-        address: String        
+        address: String
+        inventory: Inventory     
     }
 
     input UserInput {
@@ -33,6 +34,7 @@ export default `
         dni: Int
         role: String
         address: String  
+        inventory: ID
     }
 
     type Query {

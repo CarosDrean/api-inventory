@@ -10,7 +10,8 @@ const productSchema= new Schema({
     color: { type: String, required: true },
     stock: { type: Number, required: true },
     price: { type: Number, required: true },
-    compatibility: { type: String, required:true }
+    compatibility: { type: String, required:true },
+    inventory: { type: Schema.Types.ObjectId, ref: 'Inventory' }
 })
 
 export default model('Product', productSchema)

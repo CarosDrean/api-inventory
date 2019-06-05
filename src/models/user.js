@@ -9,7 +9,8 @@ const userSchema = new Schema({
     dni: { type: Number, required: true },
     role: { type: String, required: true }, // admin or user
     movements: [{ type: Schema.Types.ObjectId, ref: 'Movement' }],
-    address: { type: String }
+    address: { type: String },
+    inventory: { type: Schema.Types.ObjectId, ref: 'Inventory' }
 })
 
 export default model('User', userSchema)

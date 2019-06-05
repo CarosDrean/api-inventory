@@ -1,4 +1,5 @@
 import Compatibility from '../models/compatibility'
+import Inventory from '../models/inventory'
 import permission from '../middlewares/permissions';
 
 export default {
@@ -25,6 +26,11 @@ export default {
         updateCompatibility: async(_, { _id, input }, { user, role }) => {
             permission.isUser(user, role)
             return await Compatibility.findByIdAndUpdate(_id, input, { new: true })
+        }
+    },
+    Compatibility: {
+        inventory: async({ inventory }) => {
+            return await Inventory.findById({ _id: inventory })
         }
     }
 }

@@ -19,8 +19,6 @@ app.get('/', (req, res) => {
     })
 })
 
-// TODO: falta poner todos los querys en forma ascendente -1
-
 app.use(auth.checkHeaders)
 
 app.use('/graphql', graphqlHTTP((req) => ({

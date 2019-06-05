@@ -1,6 +1,7 @@
 import Movement from '../models/movement'
 import Product from '../models/product'
 import User from '../models/user'
+import Inventory from '../models/inventory'
 import permission from '../middlewares/permissions';
 
 export default {
@@ -35,6 +36,9 @@ export default {
         },
         user: async({ user }) => {
             return await User.findById({ _id: user })
+        },
+        inventory: async({ inventory }) => {
+            return await Inventory.findById({ _id: inventory })
         }
     }
 }

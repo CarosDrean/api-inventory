@@ -1,4 +1,5 @@
 import Product from '../models/product'
+import Inventory from '../models/inventory'
 import permission from '../middlewares/permissions';
 
 export default {
@@ -25,6 +26,11 @@ export default {
         updateProduct: async(_, { _id, input }, { user, role }) => {
             permission.isUser(user, role)
             return await Product.findByIdAndUpdate(_id, input, { new: true })
+        }
+    },
+    Product: {
+        inventory: async({ inventory }) => {
+            return await Inventory.findById({ _id: inventory })
         }
     }
 }

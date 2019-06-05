@@ -2,10 +2,12 @@ export default `
     type Compatibility {
         _id: ID
         name: String!
+        inventory: Inventory
     }
 
     input CompatibilityInput {
         name: String!
+        inventory: ID
     }
 
     type Query {

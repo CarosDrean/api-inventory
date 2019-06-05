@@ -11,6 +11,7 @@ export default `
         stock: Int
         price: Float
         compatibility: String
+        inventory: Inventory
     }
 
     input ProductInput {
@@ -24,6 +25,7 @@ export default `
         stock: Int
         price: Float
         compatibility: String
+        inventory: ID
     }
 
     type Query {
