@@ -12,7 +12,6 @@ permission.isAdmin = (user, role) => {
 
 permission.isUser = (user, role) => {
     permission.isAuthenticated(user)
-    console.log('per: ' + role)
     if(role !== 'User') throw new Error('No es usuario.')
 }
 

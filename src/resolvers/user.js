@@ -1,28 +1,32 @@
-import jwt from 'jsonwebtoken'
-import { SECRET_TOKEN } from '../config'
 import auth from '../middlewares/auth'
 import User from '../models/user'
 import Movement from '../models/movement'
+import permission from '../middlewares/permissions';
 
 export default {
     Query: {
-        user: async(_, { _id }) => {
+        user: async(_, { _id }, { user, role }) => {
+            permission.isAuthenticated(user)
             return await User.findById(_id).exec()
         },
-        users: async() => {
-            return await User.find()
+        users: async(_, args, { user, role }) => {
+            permission.isAdmin(user, role)
+            return await User.find().sort({_id: -1})
         }
     },
     Mutation: {
         loginUser: async (_, { email, password }) => auth.login(email, password),
-        createUser: async(_, { input }) => {
+        createUser: async(_, { input }, { user, role }) => {
+            permission.isAdmin(user, role)
             const user = new User(input)
             return await user.save()
         },
-        deleteUser: async(_, { _id }) => {
+        deleteUser: async(_, { _id }, { user, role }) => {
+            permission.isAuthenticated(user)
             return await User.findByIdAndDelete(_id)
         },
-        updateUser: async(_, { _id, input }) => {
+        updateUser: async(_, { _id, input }, { user, role }) => {
+            permission.isAuthenticated(user)
             return await User.findByIdAndUpdate(_id, input, { new: true })
         }
     },

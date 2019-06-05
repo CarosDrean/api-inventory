@@ -28,18 +28,15 @@ auth.checkHeaders = async (req, res, next) => {
   const token = req.headers["x-token"]
   if (token) {
     try {
-      console.log('intentando...')
       const {
         user
       } = jwt.verify(token, SECRET_TOKEN)
-      // const {role} = await User.findOne({ _id: user }, {role: 1})
       req.role = getRole(user)
       req.user = user
     } catch (e) {
       //INVALID token
       console.log('nuevamente intentando...')
       const newToken = await auth.checkToken(token)
-      // const {role} = await User.findOne({ _id: newToken.user }, {role: 1})
       req.role = role
       req.user = getRole(newToken.user)
       if (newToken.token) {
@@ -91,7 +88,7 @@ auth.login = async (email, password) => {
       success: false,
       errors: [{
         path: 'email',
-        message: 'Email no existe'
+        message: '¡Usuario no existe!'
       }]
     }
   }
@@ -100,7 +97,7 @@ auth.login = async (email, password) => {
       success: false,
       errors: [{
         path: 'password',
-        message: 'Password inválido'
+        message: '¡Contraseña incorrecta!'
       }]
     }
   }
@@ -110,6 +107,7 @@ auth.login = async (email, password) => {
   return {
     success: true,
     token,
+    user,
     errors: []
   }
 }

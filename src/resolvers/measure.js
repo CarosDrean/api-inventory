@@ -2,22 +2,27 @@ import Measure from '../models/measure'
 
 export default {
     Query: {
-        measure: async(_, { _id }) => {
+        measure: async(_, { _id }, { user, role }) => {
+            permission.isUser(user, role)
             return await Measure.findById(_id).exec()
         },
-        measures: async() => {
-            return await Measure.find()
+        measures: async(_, args, { user, role }) => {
+            permission.isUser(user, role)
+            return await Measure.find().sort({_id: -1})
         }
     },
     Mutation: {
-        createMeasure: async(_, { input }) => {
+        createMeasure: async(_, { input }, { user, role }) => {
+            permission.isUser(user, role)
             const measure = new Measure(input)
             return await measure.save()
         },
-        deleteMeasure: async(_, { _id }) => {
+        deleteMeasure: async(_, { _id }, { user, role }) => {
+            permission.isUser(user, role)
             return await Measure.findByIdAndDelete(_id)
         },
-        updateMeasure: async(_, { _id, input }) => {
+        updateMeasure: async(_, { _id, input }, { user, role }) => {
+            permission.isUser(user, role)
             return await Measure.findByIdAndUpdate(_id, input, { new: true })
         }
     }

@@ -7,6 +7,7 @@ export default `
     type Response {
         success: Boolean!
         token: String
+        user: User
         errors: [Error]
     }
 

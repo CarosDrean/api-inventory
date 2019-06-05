@@ -7,7 +7,7 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     phone: { type: Number, required: true },
     dni: { type: Number, required: true },
-    role: { type: String, required: true }, // admin or customer
+    role: { type: String, required: true }, // admin or user
     movements: [{ type: Schema.Types.ObjectId, ref: 'Movement' }],
     address: { type: String }
 })

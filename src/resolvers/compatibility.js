@@ -1,23 +1,29 @@
 import Compatibility from '../models/compatibility'
+import permission from '../middlewares/permissions';
 
 export default {
     Query: {
-        compatibility: async(_, { _id }) => {
+        compatibility: async(_, { _id }, { user, role }) => {
+            permission.isUser(user, role)
             return await Compatibility.findById(_id).exec()
         },
-        compatibilitys: async() => {
-            return await Compatibility.find()
+        compatibilitys: async(_, args, { user, role }) => {
+            permission.isUser(user, role)
+            return await Compatibility.find().sort({_id: -1})
         }
     },
     Mutation: {
-        createCompatibility: async(_, { input }) => {
+        createCompatibility: async(_, { input }, { user, role }) => {
+            permission.isUser(user, role)
             const compatibility = new Compatibility(input)
             return await compatibility.save()
         },
-        deleteCompatibility: async(_, { _id }) => {
+        deleteCompatibility: async(_, { _id }, { user, role }) => {
+            permission.isUser(user, role)
             return await Compatibility.findByIdAndDelete(_id)
         },
-        updateCompatibility: async(_, { _id, input }) => {
+        updateCompatibility: async(_, { _id, input }, { user, role }) => {
+            permission.isUser(user, role)
             return await Compatibility.findByIdAndUpdate(_id, input, { new: true })
         }
     }
