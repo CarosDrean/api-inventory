@@ -18,8 +18,8 @@ export default {
         loginUser: async (_, { email, password }) => auth.login(email, password),
         createUser: async(_, { input }, { user, role }) => {
             permission.isAdmin(user, role)
-            const user = new User(input)
-            return await user.save()
+            const userDB = new User(input)
+            return await userDB.save()
         },
         deleteUser: async(_, { _id }, { user, role }) => {
             permission.isAuthenticated(user)
