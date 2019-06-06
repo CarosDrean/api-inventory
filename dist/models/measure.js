@@ -15,6 +15,10 @@ var measureSchema = new _mongoose.Schema({
   denomination: {
     type: String,
     required: true
+  },
+  inventory: {
+    type: _mongoose.Schema.Types.ObjectId,
+    ref: 'Inventory'
   }
 });
 

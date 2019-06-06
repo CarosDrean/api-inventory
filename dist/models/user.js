@@ -44,6 +44,10 @@ var userSchema = new _mongoose.Schema({
   }],
   address: {
     type: String
+  },
+  inventory: {
+    type: _mongoose.Schema.Types.ObjectId,
+    ref: 'Inventory'
   }
 });
 

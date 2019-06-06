@@ -28,8 +28,7 @@ app.get('/', function (req, res) {
   res.json({
     message: 'Welcome!'
   });
-}); // TODO: falta poner todos los querys en forma ascendente -1
-
+});
 app.use(_auth["default"].checkHeaders);
 app.use('/graphql', (0, _expressGraphql["default"])(function (req) {
   return {

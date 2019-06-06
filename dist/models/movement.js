@@ -39,6 +39,10 @@ var movementSchema = new _mongoose.Schema({
   type: {
     type: String,
     required: true
+  },
+  inventory: {
+    type: _mongoose.Schema.Types.ObjectId,
+    ref: 'Inventory'
   }
 });
 

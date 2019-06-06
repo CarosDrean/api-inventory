@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _compatibility2 = _interopRequireDefault(require("../models/compatibility"));
 
+var _inventory3 = _interopRequireDefault(require("../models/inventory"));
+
 var _permissions = _interopRequireDefault(require("../middlewares/permissions"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -195,6 +197,41 @@ var _default = {
       }
 
       return updateCompatibility;
+    }()
+  },
+  Compatibility: {
+    inventory: function () {
+      var _inventory2 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee6(_ref10) {
+        var _inventory;
+
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _inventory = _ref10.inventory;
+                _context6.next = 3;
+                return _inventory3["default"].findById({
+                  _id: _inventory
+                });
+
+              case 3:
+                return _context6.abrupt("return", _context6.sent);
+
+              case 4:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }));
+
+      function inventory(_x16) {
+        return _inventory2.apply(this, arguments);
+      }
+
+      return inventory;
     }()
   }
 };

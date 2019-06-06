@@ -11,6 +11,8 @@ var _user3 = _interopRequireDefault(require("../models/user"));
 
 var _movement = _interopRequireDefault(require("../models/movement"));
 
+var _inventory3 = _interopRequireDefault(require("../models/inventory"));
+
 var _permissions = _interopRequireDefault(require("../middlewares/permissions"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -260,6 +262,39 @@ var _default = {
       }
 
       return movements;
+    }(),
+    inventory: function () {
+      var _inventory2 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee8(_ref12) {
+        var _inventory;
+
+        return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _inventory = _ref12.inventory;
+                _context8.next = 3;
+                return _inventory3["default"].findById({
+                  _id: _inventory
+                });
+
+              case 3:
+                return _context8.abrupt("return", _context8.sent);
+
+              case 4:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8);
+      }));
+
+      function inventory(_x19) {
+        return _inventory2.apply(this, arguments);
+      }
+
+      return inventory;
     }()
   }
 };
