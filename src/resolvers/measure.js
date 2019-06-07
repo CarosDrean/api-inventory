@@ -11,6 +11,10 @@ export default {
         measures: async(_, args, { user, role }) => {
             permission.isUser(user, role)
             return await Measure.find().sort({_id: -1})
+        },
+        measuresInventory: async(_, { inventory }, { user, role }) => {
+            permission.isUser(user, role)
+            return await Measure.find({inventory}).exec()
         }
     },
     Mutation: {

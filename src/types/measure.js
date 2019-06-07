@@ -15,6 +15,7 @@ export default `
     type Query {
         measure(_id: ID!): Measure
         measures: [Measure]
+        measuresInventory(inventory: ID!): [Measure]
     }
 
     type Mutation {
