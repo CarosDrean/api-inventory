@@ -35,8 +35,9 @@ export default {
         movements: async({ _id }) => {
             return await Movement.find({ user: _id })
         },
-        inventory: async({ inventory }) => {
-            return await Inventory.findById({ _id: inventory })
-        }
+        // TODO: esto no esta funcoinando por ahora
+        // inventory: async({ inventory }) => {
+        //     return await Inventory.findById({ _id: inventory })
+        // }
     }
 }

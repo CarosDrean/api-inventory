@@ -22,7 +22,7 @@ export default `
         role: String
         movements: [Movement]
         address: String
-        inventory: Inventory     
+        inventory: String     
     }
 
     input UserInput {

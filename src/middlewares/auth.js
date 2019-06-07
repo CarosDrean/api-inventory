@@ -15,6 +15,7 @@ function getRole(user) {
   if (user) {
     if (role === undefined) {
       userTemp = user
+      // TODO: esto no esta funcionando correctamente, a la segunda llamada recien se actualiza el rol
       permission.getRoleUser(user).then((rol) => {
         console.log('Actualizando role: ' + rol)
         role = rol
