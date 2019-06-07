@@ -11,6 +11,10 @@ export default {
         products: async(_, args, { user, role }) => {
             permission.isAuthenticated(user)
             return await Product.find().sort({_id: -1})
+        },
+        productsInventory: async(_, { inventory }, { user, role }) => {
+            permission.isAuthenticated(user)
+            return await Product.find({inventory}).sort({_id: -1})
         }
     },
     Mutation: {

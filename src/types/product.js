@@ -31,6 +31,7 @@ export default `
     type Query {
         product(_id: ID!): Product
         products: [Product]
+        productsInventory(inventory: ID!): [Product]
     }
 
     type Mutation {

@@ -11,6 +11,10 @@ export default {
         compatibilitys: async(_, args, { user, role }) => {
             permission.isUser(user, role)
             return await Compatibility.find().sort({_id: -1})
+        },
+        compatibilitysInventory: async(_, { inventory }, { user, role }) => {
+            permission.isUser(user, role)
+            return await Compatibility.find({inventory}).sort({_id: -1})
         }
     },
     Mutation: {

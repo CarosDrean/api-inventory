@@ -27,6 +27,7 @@ export default `
     type Query {
         movement(_id: ID!): Movement
         movements: [Movement]
+        movementsInventory(inventory: ID!): [Movement]
     }
 
     type Mutation {

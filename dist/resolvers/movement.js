@@ -92,31 +92,32 @@ var _default = {
       }
 
       return movements;
-    }()
-  },
-  Mutation: {
-    createMovement: function () {
-      var _createMovement = _asyncToGenerator(
+    }(),
+    movementsInventory: function () {
+      var _movementsInventory = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee3(_, _ref4, _ref5) {
-        var input, user, role, movement;
+        var inventory, user, role;
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                input = _ref4.input;
+                inventory = _ref4.inventory;
                 user = _ref5.user, role = _ref5.role;
 
-                _permissions["default"].isUser(user, role);
+                _permissions["default"].isAuthenticated(user);
 
-                movement = new _movement2["default"](input);
-                _context3.next = 6;
-                return movement.save();
+                _context3.next = 5;
+                return _movement2["default"].find({
+                  inventory: inventory
+                }).sort({
+                  _id: -1
+                });
 
-              case 6:
+              case 5:
                 return _context3.abrupt("return", _context3.sent);
 
-              case 7:
+              case 6:
               case "end":
                 return _context3.stop();
             }
@@ -124,7 +125,44 @@ var _default = {
         }, _callee3);
       }));
 
-      function createMovement(_x7, _x8, _x9) {
+      function movementsInventory(_x7, _x8, _x9) {
+        return _movementsInventory.apply(this, arguments);
+      }
+
+      return movementsInventory;
+    }()
+  },
+  Mutation: {
+    createMovement: function () {
+      var _createMovement = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee4(_, _ref6, _ref7) {
+        var input, user, role, movement;
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                input = _ref6.input;
+                user = _ref7.user, role = _ref7.role;
+
+                _permissions["default"].isUser(user, role);
+
+                movement = new _movement2["default"](input);
+                _context4.next = 6;
+                return movement.save();
+
+              case 6:
+                return _context4.abrupt("return", _context4.sent);
+
+              case 7:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      function createMovement(_x10, _x11, _x12) {
         return _createMovement.apply(this, arguments);
       }
 
@@ -133,57 +171,20 @@ var _default = {
     deleteMovement: function () {
       var _deleteMovement = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee4(_, _ref6, _ref7) {
-        var _id, user, role;
-
-        return regeneratorRuntime.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _id = _ref6._id;
-                user = _ref7.user, role = _ref7.role;
-
-                _permissions["default"].isUser(user, role);
-
-                _context4.next = 5;
-                return _movement2["default"].findByIdAndDelete(_id);
-
-              case 5:
-                return _context4.abrupt("return", _context4.sent);
-
-              case 6:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
-      }));
-
-      function deleteMovement(_x10, _x11, _x12) {
-        return _deleteMovement.apply(this, arguments);
-      }
-
-      return deleteMovement;
-    }(),
-    updateMovement: function () {
-      var _updateMovement = _asyncToGenerator(
-      /*#__PURE__*/
       regeneratorRuntime.mark(function _callee5(_, _ref8, _ref9) {
-        var _id, input, user, role;
+        var _id, user, role;
 
         return regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                _id = _ref8._id, input = _ref8.input;
+                _id = _ref8._id;
                 user = _ref9.user, role = _ref9.role;
 
                 _permissions["default"].isUser(user, role);
 
                 _context5.next = 5;
-                return _movement2["default"].findByIdAndUpdate(_id, input, {
-                  "new": true
-                });
+                return _movement2["default"].findByIdAndDelete(_id);
 
               case 5:
                 return _context5.abrupt("return", _context5.sent);
@@ -196,7 +197,44 @@ var _default = {
         }, _callee5);
       }));
 
-      function updateMovement(_x13, _x14, _x15) {
+      function deleteMovement(_x13, _x14, _x15) {
+        return _deleteMovement.apply(this, arguments);
+      }
+
+      return deleteMovement;
+    }(),
+    updateMovement: function () {
+      var _updateMovement = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee6(_, _ref10, _ref11) {
+        var _id, input, user, role;
+
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _id = _ref10._id, input = _ref10.input;
+                user = _ref11.user, role = _ref11.role;
+
+                _permissions["default"].isUser(user, role);
+
+                _context6.next = 5;
+                return _movement2["default"].findByIdAndUpdate(_id, input, {
+                  "new": true
+                });
+
+              case 5:
+                return _context6.abrupt("return", _context6.sent);
+
+              case 6:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }));
+
+      function updateMovement(_x16, _x17, _x18) {
         return _updateMovement.apply(this, arguments);
       }
 
@@ -207,50 +245,17 @@ var _default = {
     product: function () {
       var _product2 = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee6(_ref10) {
+      regeneratorRuntime.mark(function _callee7(_ref12) {
         var _product;
-
-        return regeneratorRuntime.wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                _product = _ref10.product;
-                _context6.next = 3;
-                return _product3["default"].findById({
-                  _id: _product
-                });
-
-              case 3:
-                return _context6.abrupt("return", _context6.sent);
-
-              case 4:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6);
-      }));
-
-      function product(_x16) {
-        return _product2.apply(this, arguments);
-      }
-
-      return product;
-    }(),
-    user: function () {
-      var _user2 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee7(_ref11) {
-        var _user;
 
         return regeneratorRuntime.wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                _user = _ref11.user;
+                _product = _ref12.product;
                 _context7.next = 3;
-                return _user3["default"].findById({
-                  _id: _user
+                return _product3["default"].findById({
+                  _id: _product
                 });
 
               case 3:
@@ -264,26 +269,26 @@ var _default = {
         }, _callee7);
       }));
 
-      function user(_x17) {
-        return _user2.apply(this, arguments);
+      function product(_x19) {
+        return _product2.apply(this, arguments);
       }
 
-      return user;
+      return product;
     }(),
-    inventory: function () {
-      var _inventory2 = _asyncToGenerator(
+    user: function () {
+      var _user2 = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee8(_ref12) {
-        var _inventory;
+      regeneratorRuntime.mark(function _callee8(_ref13) {
+        var _user;
 
         return regeneratorRuntime.wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
-                _inventory = _ref12.inventory;
+                _user = _ref13.user;
                 _context8.next = 3;
-                return _inventory3["default"].findById({
-                  _id: _inventory
+                return _user3["default"].findById({
+                  _id: _user
                 });
 
               case 3:
@@ -297,7 +302,40 @@ var _default = {
         }, _callee8);
       }));
 
-      function inventory(_x18) {
+      function user(_x20) {
+        return _user2.apply(this, arguments);
+      }
+
+      return user;
+    }(),
+    inventory: function () {
+      var _inventory2 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee9(_ref14) {
+        var _inventory;
+
+        return regeneratorRuntime.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _inventory = _ref14.inventory;
+                _context9.next = 3;
+                return _inventory3["default"].findById({
+                  _id: _inventory
+                });
+
+              case 3:
+                return _context9.abrupt("return", _context9.sent);
+
+              case 4:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9);
+      }));
+
+      function inventory(_x21) {
         return _inventory2.apply(this, arguments);
       }
 

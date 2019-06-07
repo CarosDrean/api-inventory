@@ -13,6 +13,10 @@ export default {
         movements: async(_, args, { user, role }) => {
             permission.isAuthenticated(user)
             return await Movement.find().sort({_id: -1})
+        },
+        movementsInventory: async(_, { inventory }, { user, role }) => {
+            permission.isAuthenticated(user)
+            return await Movement.find({inventory}).sort({_id: -1})
         }
     },
     Mutation: {

@@ -13,6 +13,7 @@ export default `
     type Query {
         compatibility(_id: ID!): Compatibility
         compatibilitys: [Compatibility]
+        compatibilitysInventory(inventory: ID!): [Compatibility]
     }
 
     type Mutation {

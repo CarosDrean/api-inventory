@@ -88,31 +88,32 @@ var _default = {
       }
 
       return categorys;
-    }()
-  },
-  Mutation: {
-    createCategory: function () {
-      var _createCategory = _asyncToGenerator(
+    }(),
+    categorysInventory: function () {
+      var _categorysInventory = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee3(_, _ref4, _ref5) {
-        var input, user, role, category;
+        var inventory, user, role;
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                input = _ref4.input;
+                inventory = _ref4.inventory;
                 user = _ref5.user, role = _ref5.role;
 
                 _permissions["default"].isUser(user, role);
 
-                category = new _category2["default"](input);
-                _context3.next = 6;
-                return category.save();
+                _context3.next = 5;
+                return _category2["default"].find({
+                  inventory: inventory
+                }).sort({
+                  _id: -1
+                });
 
-              case 6:
+              case 5:
                 return _context3.abrupt("return", _context3.sent);
 
-              case 7:
+              case 6:
               case "end":
                 return _context3.stop();
             }
@@ -120,7 +121,44 @@ var _default = {
         }, _callee3);
       }));
 
-      function createCategory(_x7, _x8, _x9) {
+      function categorysInventory(_x7, _x8, _x9) {
+        return _categorysInventory.apply(this, arguments);
+      }
+
+      return categorysInventory;
+    }()
+  },
+  Mutation: {
+    createCategory: function () {
+      var _createCategory = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee4(_, _ref6, _ref7) {
+        var input, user, role, category;
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                input = _ref6.input;
+                user = _ref7.user, role = _ref7.role;
+
+                _permissions["default"].isUser(user, role);
+
+                category = new _category2["default"](input);
+                _context4.next = 6;
+                return category.save();
+
+              case 6:
+                return _context4.abrupt("return", _context4.sent);
+
+              case 7:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      function createCategory(_x10, _x11, _x12) {
         return _createCategory.apply(this, arguments);
       }
 
@@ -129,57 +167,20 @@ var _default = {
     deleteCategory: function () {
       var _deleteCategory = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee4(_, _ref6, _ref7) {
-        var _id, user, role;
-
-        return regeneratorRuntime.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _id = _ref6._id;
-                user = _ref7.user, role = _ref7.role;
-
-                _permissions["default"].isUser(user, role);
-
-                _context4.next = 5;
-                return _category2["default"].findByIdAndDelete(_id);
-
-              case 5:
-                return _context4.abrupt("return", _context4.sent);
-
-              case 6:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
-      }));
-
-      function deleteCategory(_x10, _x11, _x12) {
-        return _deleteCategory.apply(this, arguments);
-      }
-
-      return deleteCategory;
-    }(),
-    updateCategory: function () {
-      var _updateCategory = _asyncToGenerator(
-      /*#__PURE__*/
       regeneratorRuntime.mark(function _callee5(_, _ref8, _ref9) {
-        var _id, input, user, role;
+        var _id, user, role;
 
         return regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                _id = _ref8._id, input = _ref8.input;
+                _id = _ref8._id;
                 user = _ref9.user, role = _ref9.role;
 
                 _permissions["default"].isUser(user, role);
 
                 _context5.next = 5;
-                return _category2["default"].findByIdAndUpdate(_id, input, {
-                  "new": true
-                });
+                return _category2["default"].findByIdAndDelete(_id);
 
               case 5:
                 return _context5.abrupt("return", _context5.sent);
@@ -192,7 +193,44 @@ var _default = {
         }, _callee5);
       }));
 
-      function updateCategory(_x13, _x14, _x15) {
+      function deleteCategory(_x13, _x14, _x15) {
+        return _deleteCategory.apply(this, arguments);
+      }
+
+      return deleteCategory;
+    }(),
+    updateCategory: function () {
+      var _updateCategory = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee6(_, _ref10, _ref11) {
+        var _id, input, user, role;
+
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _id = _ref10._id, input = _ref10.input;
+                user = _ref11.user, role = _ref11.role;
+
+                _permissions["default"].isUser(user, role);
+
+                _context6.next = 5;
+                return _category2["default"].findByIdAndUpdate(_id, input, {
+                  "new": true
+                });
+
+              case 5:
+                return _context6.abrupt("return", _context6.sent);
+
+              case 6:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }));
+
+      function updateCategory(_x16, _x17, _x18) {
         return _updateCategory.apply(this, arguments);
       }
 
@@ -203,31 +241,31 @@ var _default = {
     inventory: function () {
       var _inventory2 = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee6(_ref10) {
+      regeneratorRuntime.mark(function _callee7(_ref12) {
         var _inventory;
 
-        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+        return regeneratorRuntime.wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
-                _inventory = _ref10.inventory;
-                _context6.next = 3;
+                _inventory = _ref12.inventory;
+                _context7.next = 3;
                 return _inventory3["default"].findById({
                   _id: _inventory
                 });
 
               case 3:
-                return _context6.abrupt("return", _context6.sent);
+                return _context7.abrupt("return", _context7.sent);
 
               case 4:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
           }
-        }, _callee6);
+        }, _callee7);
       }));
 
-      function inventory(_x16) {
+      function inventory(_x19) {
         return _inventory2.apply(this, arguments);
       }
 

@@ -15,6 +15,7 @@ export default `
     type Query {
         category(_id: ID!): Category
         categorys: [Category]
+        categorysInventory(inventory: ID!): [Category]
     }
 
     type Mutation {

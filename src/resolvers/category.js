@@ -11,6 +11,10 @@ export default {
         categorys: async(_, args, { user, role }) => {
             permission.isUser(user, role)
             return await Category.find().sort({_id: -1})
+        },
+        categorysInventory: async(_, { inventory }, { user, role }) => {
+            permission.isUser(user, role)
+            return await Category.find({inventory}).sort({_id: -1})
         }
     },
     Mutation: {
