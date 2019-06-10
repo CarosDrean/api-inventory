@@ -2,11 +2,13 @@ export default `
     type Compatibility {
         _id: ID
         name: String!
+        denomination: String
         inventory: Inventory
     }
 
     input CompatibilityInput {
         name: String!
+        denomination: String
         inventory: ID
     }
 
