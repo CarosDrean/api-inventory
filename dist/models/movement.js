@@ -16,6 +16,9 @@ var movementSchema = new _mongoose.Schema({
     type: Number,
     required: true
   },
+  pricePurchase: {
+    type: Number
+  },
   priceUnit: {
     type: Number,
     required: true
@@ -42,7 +45,8 @@ var movementSchema = new _mongoose.Schema({
   },
   inventory: {
     type: _mongoose.Schema.Types.ObjectId,
-    ref: 'Inventory'
+    ref: 'Inventory' // TODO: hacer que aya una configuracion de usuario para establecer el precio, aqunque no tmbien podria ser
+
   }
 });
 

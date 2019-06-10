@@ -12,6 +12,10 @@ var compabilitySchema = new _mongoose.Schema({
     type: String,
     required: true
   },
+  denomination: {
+    type: String,
+    required: true
+  },
   inventory: {
     type: _mongoose.Schema.Types.ObjectId,
     ref: 'Inventory'
