@@ -3,6 +3,7 @@ export default `
         _id: ID
         product: Product
         quantity: Int
+        pricePurchase: Float
         priceUnit: Float
         priceTotal: Float
         user: User
@@ -15,6 +16,7 @@ export default `
     input MovementInput {
         product: ID
         quantity: Int
+        pricePurchase: Float
         priceUnit: Float
         priceTotal: Float
         user: ID
