@@ -1,8 +1,6 @@
 import Inventory from '../models/inventory'
 import Product from '../models/product'
 import Category from '../models/category'
-import Compatibility from '../models/compatibility'
-import Measure from '../models/measure'
 import Movement from '../models/movement'
 import permission from '../middlewares/permissions'
 
@@ -38,12 +36,6 @@ export default {
         },
         categorys: async({ _id }) => {
             return await Category.find({ inventory: _id })
-        },
-        compatibilitys: async({ _id }) => {
-            return await Compatibility.find({ inventory: _id })
-        },
-        measures: async({ _id }) => {
-            return await Measure.find({ inventory: _id })
         },
         movements: async({ _id }) => {
             return await Movement.find({ inventory: _id })

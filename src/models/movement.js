@@ -11,7 +11,6 @@ const movementSchema= new Schema({
     time: { type:String, required:true },
     type: { type:String, required:true },
     inventory: { type: Schema.Types.ObjectId, ref: 'Inventory' }
-    // TODO: hacer que aya una configuracion de usuario para establecer el precio, aqunque no tmbien podria ser
 })
 
 export default model('Movement', movementSchema)

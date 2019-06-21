@@ -5,8 +5,6 @@ const inventorySchema= new Schema({
     description: { type: String, required: true },
     products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
     categories: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
-    compatibilities: [{ type: Schema.Types.ObjectId, ref: 'Compatibility' }],
-    measures: [{ type: Schema.Types.ObjectId, ref: 'Measure' }],
     movements: [{ type: Schema.Types.ObjectId, ref: 'Movement' }],
 })
 

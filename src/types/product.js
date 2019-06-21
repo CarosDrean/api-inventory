@@ -1,30 +1,24 @@
 export default `
     type Product {
         _id: ID
-        name: String!
+        name: String
         category: String
-        model: String
         description: String
-        trademark: String
         measure: String
-        color: String
         stock: Int
         price: Float
-        compatibility: String
+        costo: Float
         inventory: Inventory
     }
 
     input ProductInput {
-        name: String!
+        name: String
         category: String
-        model: String
         description: String
-        trademark: String
         measure: String
-        color: String
         stock: Int
         price: Float
-        compatibility: String
+        costo: Float
         inventory: ID
     }
 

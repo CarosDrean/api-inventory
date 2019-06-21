@@ -5,8 +5,6 @@ export default `
         description: String!
         products: [Product]
         categorys: [Category]
-        compatibilitys: [Compatibility]
-        measures: [Measure]
         movements: [Movement]
     }
 

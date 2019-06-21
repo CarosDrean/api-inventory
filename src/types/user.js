@@ -13,27 +13,19 @@ export default `
 
     type User {
         _id: ID
-        firstname: String!
-        lastname: String
+        name: String
         user: String
         password: String
-        phone: Int
-        dni: Int
         role: String
         movements: [Movement]
-        address: String
         inventory: String     
     }
 
     input UserInput {
-        firstname: String!
-        lastname: String
+        name: String
         user: String
         password: String
-        phone: Int
-        dni: Int
         role: String
-        address: String  
         inventory: ID
     }
 
